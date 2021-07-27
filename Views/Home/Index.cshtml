@@ -1,0 +1,28 @@
+@model IEnumerable<ReactDemo.Models.CalcModel>
+@{
+	Layout = null;
+}
+<html>
+<head>
+	<title>Calculator</title>
+</head>
+<body>
+	@Html.React("Calculator", new
+	{
+		initialData = Model,
+		url = Url.Action("calcs"),
+		submitUrl = Url.Action("doCalc"),
+		removeUrl=Url.Action("remove"),
+		pollInterval = 2000,
+	})
+	<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+	<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+	<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+	<script src="@Url.Content("~/js/Calculator.jsx")"></script>
+	    <link rel="stylesheet" href="~/css/lib/font-awesome/css/all.min.css" />
+	    <link rel="stylesheet" href="~/css/calc.css" />
+
+	@Html.ReactInitJavaScript()
+</body>
+</html>
